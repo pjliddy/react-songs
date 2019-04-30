@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { selectSong } from '../actions';
 
 class SongList extends Component {
   // this.props === { songs: state.songs }
@@ -9,7 +10,10 @@ class SongList extends Component {
       return (
         <div className="item" key={song.title}>
           <div className="right floated content">
-            <button className="ui button primary">
+            <button
+              className="ui button primary"
+              onClick={() => this.props.selectSong(song)}
+            >
               Select
             </button>
           </div>
@@ -30,8 +34,9 @@ class SongList extends Component {
 
 // mapStateToProps is included in every redux component, along with connect
 const mapStateToProps = (state) => {
+  console.log(state);
   return { songs: state.songs };
 }
 
 // connect is a React component that gets a list of songs from the Provider
-export default connect(mapStateToProps) (SongList);
+export default connect(mapStateToProps, { selectSong }) (SongList);
