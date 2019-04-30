@@ -34,7 +34,6 @@ class SongList extends Component {
 
 // mapStateToProps is included in every redux component, along with connect
 const mapStateToProps = (state) => {
-  console.log(state);
   return { songs: state.songs };
 }
 
